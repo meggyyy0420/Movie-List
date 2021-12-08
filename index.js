@@ -25,7 +25,7 @@ function renderMovieCard(data) {
           <div class="card">
             <img src="${POSTER_URL + item.image}">
             <div class="card-body">
-              <h5 class="card-title">${item.title}</h5>
+              <h5 class="card-title" style="height: 3vw;">${item.title}</h5>
             </div>
             <div class="card-footer">
               <button class="btn btn-primary btn-show-movie"  data-toggle="modal" data-target="#movie-modal" data-id="${item.id}">More</button>

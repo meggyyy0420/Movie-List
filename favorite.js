@@ -21,7 +21,7 @@ function renderMovieCard(data) {
           <div class="card">
             <img src="${POSTER_URL + item.image}">
             <div class="card-body">
-              <h5 class="card-title">${item.title}</h5>
+              <h5 class="card-title" style="height: 3vw;">${item.title}</h5>
             </div>
             <div class="card-footer">
               <button class="btn btn-primary btn-show-movie"  data-toggle="modal" data-target="#movie-modal" data-id="${item.id}">More</button>
@@ -47,7 +47,7 @@ function renderMovieColumn(data) {
         </div>
         <div class="col-6 text-center">
           <button class="btn btn-primary btn-show-movie" data-toggle="modal" data-target="#movie-modal" data-id="${item.id}">More</button>
-          <button class="btn btn-info btn-add-favorite" data-id="${item.id}">+</button>
+          <button class="btn btn-danger btn-remove-favorite" data-id="${item.id}">X</button>
         </div>
       </div>
     `
@@ -90,7 +90,7 @@ function removeFromFavorite(id) {
   const movieIndex = movies.findIndex((movie) => movie.id === id)
   movies.splice(movieIndex, 1)
   localStorage.setItem('favoriteMovies', JSON.stringify(movies))
-  renderMovieCard(movies)
+  viewCheck(currentPage)
 }
 
 // 判斷顯示樣式
