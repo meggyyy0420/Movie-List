@@ -5,6 +5,7 @@ const MOVIES_PER_PAGE = 12
 
 const movies = JSON.parse(localStorage.getItem('favoriteMovies'))
 let viewMode = ''
+let currentPage = 1
 
 const dataPanel = document.querySelector('#data-panel')
 const paginator = document.querySelector('#paginator')
@@ -60,13 +61,14 @@ function getMoviesByPage(page) {
   return movies.slice(startIndex, startIndex + MOVIES_PER_PAGE)
 }
 
-function renderPaginator(amount) {
+function renderPaginator(amount, currentPage) {
   const numberOfPages = Math.ceil(amount / MOVIES_PER_PAGE)
   let rawHTML = ''
   for (let page = 1; page <= numberOfPages; page++) {
     rawHTML += `<li class="page-item"><a class="page-link" href="#" data-page="${page}">${page}</a></li>`
   }
   paginator.innerHTML = rawHTML
+  paginator.children[currentPage - 1].classList.add("active")
 }
 
 function showMovieModal(id) {
@@ -91,6 +93,15 @@ function removeFromFavorite(id) {
   renderMovieCard(movies)
 }
 
+// 判斷顯示樣式
+function viewCheck(page) {
+  if (viewMode === 'card') {
+    renderMovieCard(getMoviesByPage(page))
+  } else {
+    renderMovieColumn(getMoviesByPage(page))
+  }
+}
+
 dataPanel.addEventListener('click', function onPanelClicked(event) {
   if (event.target.matches('.btn-show-movie')) {
     showMovieModal(Number(event.target.dataset.id))
@@ -101,25 +112,20 @@ dataPanel.addEventListener('click', function onPanelClicked(event) {
 
 paginator.addEventListener('click', function onPaginatorClicked(event) {
   if (event.target.tagName !== 'A') return
-
-  const page = Number(event.target.dataset.page)
-  if (viewMode === 'card') {
-    renderMovieCard(getMoviesByPage(page))
-  } else {
-    renderMovieColumn(getMoviesByPage(page))
-  }
+  currentPage = Number(event.target.dataset.page);
+  renderPaginator(movies.length, currentPage);
+  viewCheck(currentPage);
 })
 
 viewSelector.addEventListener('click', function onViewSelectorClicked(event) {
   if (event.target.classList.contains('list-card')) {
     viewMode = 'card'
-    renderMovieCard(getMoviesByPage(1))
-
+    viewCheck(currentPage)
   } else if (event.target.classList.contains('list-column')) {
     viewMode = 'column'
-    renderMovieColumn(getMoviesByPage(1))
+    viewCheck(currentPage)
   }
 })
 
-renderPaginator(movies.length)
-renderMovieCard(getMoviesByPage(1))
+renderPaginator(movies.length, currentPage)
+renderMovieCard(getMoviesByPage(currentPage))
