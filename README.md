@@ -10,7 +10,7 @@ A simple web application show 80 movies
 - add movies to your favorite list
 - manage your favorite list
 - switch list of movies view mode
-![image](https://user-images.githubusercontent.com/79748426/145158301-86938864-6b4f-407e-8b57-f29da746dd2c.png)
+![image](https://user-images.githubusercontent.com/79748426/145161496-f619b518-3cb3-462a-b497-d3a079d0998d.png)
 
 
 ### Searching
