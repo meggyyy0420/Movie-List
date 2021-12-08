@@ -1,0 +1,22 @@
+{
+  "name": "1126movie_list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "node models/seeds/restaurantSeeder.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meggyyy0420/Movie-List.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/meggyyy0420/Movie-List/issues"
+  },
+  "homepage": "https://github.com/meggyyy0420/Movie-List#readme"
+}
