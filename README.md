@@ -24,4 +24,4 @@ You can checkout the favorite list in `favorite.html`
 press `x` to remove it from favorite list
 
 ### Project Pages
-點擊即可瀏覽本專案：<https://meggyyy0420.github.io/Movie-List/>
+瀏覽本專案：<https://meggyyy0420.github.io/Movie-List/>
